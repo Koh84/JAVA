@@ -1,0 +1,31 @@
+public class Var{
+
+	public static void main(String args[]){
+		int a = 3;
+		float f = (float)3.14; //strong cast
+		float f2 = 3.14f; //automatic cast, only if it won't lost precision
+
+		int i = 4;
+		short s = 4;
+		//short s2 = 40000; //error above value
+		//short s2 = (short)40000; //this will compile ok
+
+		//s = s+1; //this will give error because java will have to raise s to int and addition of 2 int cannot be assigned to type short.
+		s = short(s+1);
+		
+		//int *p = malloc(10*sizeof(int));
+		int p[] = new int[10];
+		int p2[] = {1,2,3};
+
+		//char str[100];
+		char str[] = new char[100];
+
+		//char str2[] = "abc";
+		String str2 = "abc";
+
+		p = null; //this will activate garbage collector 
+		p2 = null;
+		str = null;
+		str2 = null;
+	}
+}
