@@ -23,3 +23,20 @@
 
 //an abstract keyword in front of a class means it wants to define an abstract method, this method when inheritted 
 //by the son class, the son class must provide method to override it
+//As soon as a class defined it contains abstract method, it means  that you can never create object of it
+//i.e Father fat = new Father(), this will be wrong
+//hence, the only way to access a class with abstract is to inherrit from it
+//abstract can be use for template defining
+
+//Difference between abstract class and interface class
+//a son class can only extends from one abstract class
+//however, a son class can extends from more than one interface class
+
+//in an interface, variable is declared as constant
+//i.e public static final i = 10; //final meaning this value is constant
+//method is also abstract
+//i.e public abstract int getNumber(); //abstract means this must be defined in a Son class
+//interface uses keyword "implements" while inheritance uses keyword "extends"
+//Whereas in an abstract class, variables and methods can be of any types i.e public, private, protected, final etc
+//both abstract class and interface class are normally used to define a template
+

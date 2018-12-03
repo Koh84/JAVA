@@ -1,0 +1,70 @@
+//What is the point of having down conversion???
+//let say i want you to print if son is playgame wherease you daugther is dance, how to do?
+
+//Upper conversion
+//Father f = son; /*upper conversion*/
+//Father will use son's override method
+//if son does not have this method override, it will use its own method
+//also, Father can only use it's own methods unless if the above occured
+
+//Down conversion
+//Father f = new Father();
+//Son son = (Son)f; //The father must be casted
+//                  //This will cause ClassCastException because son has more method than father
+//The only way this will be fixed is 
+//Father f = new Son(); //Upper conversion follow by Down conversion
+//equivalent to Son son = new Son();
+
+class Father{
+	private int money;
+	public int getMoney()
+	{
+		return money;
+	}
+
+	public void setMoney(int money)
+	{
+		this.money = money;
+	}
+
+	public void printInfo(){ System.out.println("This is Father"); }
+	public void drink(){ System.out.println("drink ..."); }
+};
+
+class Son extends Father{
+	public void printInfo(){ System.out.println("This is Son"); }
+	public void playgame(){System.out.println("playGame ...");}
+};
+
+class Daughter extends Father{
+	public void printInfo(){ System.out.println("This is Daughter"); }
+	public void dance(){System.out.println("dance ...");}
+};
+
+public class Cnv5{
+	public static void main(String args[]){
+		Father f = new Father();
+		Son s = new Son();
+		Daughter d = new Daughter();
+
+		printAction(f);
+		printAction(s);
+		printAction(d);
+	}
+
+	public static void printAction(Father f){
+		if(f instanceof Son)
+		{
+			Son son = (Son)f; //Down convert a father to son object
+			son.playgame();
+		}
+		else if(f instanceof Daughter)
+		{
+			Daughter daug = (Daughter)f; //Down convert a father to daughter object
+			daug.dance();
+		}
+		else if(f instanceof Father)
+			f.drink();
+	}
+}
+

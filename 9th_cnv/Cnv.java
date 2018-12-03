@@ -21,26 +21,46 @@
 //a Son class can use the same method name to the father class even if the father class set the method to private,
 //however the two class defined has no relationship and is not inherited, it's the class own method
 
-//an abstract keyword in front of a class means it wants to define an abstract method, this method when inheritted 
-//by the son class, the son class must provide method to override it
-//As soon as a class defined it contains abstract method, it means  that you can never create object of it
-//i.e Father fat = new Father(), this will be wrong
-//hence, the only way to access a class with abstract is to inherrit from it
-//abstract can be use for template defining
+//Upper conversion
+//Father f = son; /*upper conversion*/
+//Father will use son's override method
+//if son does not have this method override, it will use its own method
+//also, Father can only use it's own methods unless if the above occured
+class Father{
+	private int money; //make this private so that external user cannot access it directly, can only access via setAge
+	public int getMoney()
+	{
+		return money;
+	}
 
-//Difference between abstract class and interface class
-//a son class can only extends from one abstract class
-//however, a son class can extends from more than one interface class
+	public void setMoney(int money)
+	{
+		this.money = money;
+	}
 
-//in an interface, variable is declared as constant
-//i.e public static final i = 10; //final meaning this value is constant
-//method is also abstract
-//i.e public abstract int getNumber(); //abstract means this must be defined in a Son class
-//interface uses keyword "implements" while inheritance uses keyword "extends"
-//Whereas in an abstract class, variables and methods can be of any types i.e public, private, protected, final etc
-//both abstract class and interface class are normally used to define a template
+	public void printInfo(){ System.out.println("This is Father"); }
+};
 
-//Please note:
-//function overload means you can have multiple methods with the same name but different argument
-//function override means a Son can inherit a father methods and can have the same name
+class Son extends Father{
+	public void printInfo(){ System.out.println("This is Son"); }
+	public void playgame(){System.out.println("playGame ...");}
+};
 
+class Daughter extends Father{
+	public void printInfo(){ System.out.println("This is Daughter"); }
+};
+
+public class Cnv{
+	public static void main(String args[]){
+		Son son = new Son();
+		Daughter daug = new Daughter();
+
+		Father f = son; /*upper conversion*/
+		f.printInfo();
+
+		f.playGame();
+
+		f= daug;
+		f.printInfo();
+	}
+}

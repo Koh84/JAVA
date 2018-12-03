@@ -1,0 +1,17 @@
+//you can either share a library to other class by defining "public" to its class i.e public class Mymath
+//or you can change your package to "package a" and make sure the class using this library is of "package a" as well
+
+package b;
+
+public class Mymath{
+}
+
+//or
+
+//package a;
+
+//class Mymath{
+//}
+
+//use javac -d . Mymath.java to compile
+//use javac -d . Pack.java to compile
